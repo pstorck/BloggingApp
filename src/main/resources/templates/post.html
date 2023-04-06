@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="'BlogApp: ' + ${{post.title}}"/>
+    <link th:href="@{/css/app.css}" rel="stylesheet" />
+</head>
+<body>
+    <div th:id="content">
+        <h3 th:text="${{post.title}}"/>
+        <h4 th:text="'By ' + ${{post.author}}"/>
+        <p th:utext="${{post.content}}"/>
+        <div th:id="links">
+            <a th:class="left" th:if="${prevPost}" th:href="'/' + ${{prevPost.id}}" th:text="'<<< Prev Post: \'' + ${{prevPost.title}} + '\''"/>
+            <a th:class="right" th:if="${nextPost}" th:href="'/' + ${{nextPost.id}}" th:text="'Next Post: \'' + ${{nextPost.title}} + '\' >>>'"/>
+            <a th:class="center" th:href="'/'" th:text="'Return Home'"/>
+        </div>
+    </div>
+</body>
+</html>

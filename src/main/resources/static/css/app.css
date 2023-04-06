@@ -1,0 +1,70 @@
+body {
+    background-color: lightgrey;
+}
+
+#content {
+    margin: auto;
+    width: 50%;
+    background-color: white;
+    padding: 25px;
+}
+
+h2, h3, h4 {
+    text-align: center;
+}
+
+p {
+    font-size: 12px;
+}
+
+th {
+    border-bottom: lightgrey 1px solid;
+}
+
+td {
+    padding: 5px;
+    border-bottom: lightgrey 1px dashed;
+    text-align: center;
+    font-size: 14px;
+}
+
+#title {
+    width: 75%;
+}
+
+input {
+    font-size: 12px;
+}
+
+#content textarea {
+    padding: 5px;
+    display: block;
+    width: 90%;
+    font-size: 12px;
+    resize: none;
+}
+
+
+#links {
+    text-align: center;
+    font-size: 10px;
+}
+
+.right {
+    float: right;
+    width: 30%;
+}
+
+.left {
+    float: left;
+    width: 30%;
+}
+
+.center {
+    text-align: center;
+}
+
+.small-padding {
+    padding: 10px;
+}
+

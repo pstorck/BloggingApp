@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>BlogApp: All Posts</title>
+    <link th:href="@{/css/app.css}" rel="stylesheet" />
+</head>
+<body>
+    <div th:id="content">
+        <h2>BlogApp</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="post : ${posts}">
+                <td>
+                    <a th:href="'/' + ${{post.id}}" th:text="${{post.title}}" />
+                </td>
+                <td th:text="${{post.author}}"/>
+            </tr>
+            <tr>
+                <td><a th:href="'/new'" th:text="'Add Post'" /></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
