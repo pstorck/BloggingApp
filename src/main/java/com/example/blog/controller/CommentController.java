@@ -4,6 +4,7 @@ import com.example.blog.entity.Comment;
 import com.example.blog.service.CommentService;
 import com.example.blog.service.PostService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,8 +22,12 @@ public class CommentController {
     }
 
     @PostMapping("{postId}")
-    public String addComment(@PathVariable Integer postId, Comment comment) {
-        commentService.addComment(postService.getPostById(postId), comment);
+    public String addComment(@PathVariable Integer postId, Comment comment, Model model) {
+        if (comment.getAuthor().isEmpty() || comment.getContent().isEmpty()) {
+            model.addAttribute("comment", comment);
+        } else {
+            commentService.addComment(postService.getPostById(postId), comment);
+        }
         return "redirect:/" + postId;
     }
 }

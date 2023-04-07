@@ -2,7 +2,6 @@ package com.example.blog;
 
 import com.example.blog.entity.Comment;
 import com.example.blog.entity.Post;
-import com.example.blog.repository.PostRepository;
 import com.example.blog.service.CommentService;
 import com.example.blog.service.PostService;
 import org.springframework.boot.CommandLineRunner;
