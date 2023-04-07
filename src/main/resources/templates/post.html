@@ -6,14 +6,34 @@
 </head>
 <body>
     <div th:id="content">
-        <h3 th:text="${{post.title}}"/>
-        <h4 th:text="'By ' + ${{post.author}}"/>
-        <p th:utext="${{post.content}}"/>
-        <div th:id="links">
-            <a th:class="left" th:if="${prevPost}" th:href="'/' + ${{prevPost.id}}" th:text="'<<< Prev Post: \'' + ${{prevPost.title}} + '\''"/>
-            <a th:class="right" th:if="${nextPost}" th:href="'/' + ${{nextPost.id}}" th:text="'Next Post: \'' + ${{nextPost.title}} + '\' >>>'"/>
-            <a th:class="center" th:href="'/'" th:text="'Return Home'"/>
-        </div>
+        <section th:id="post">
+            <h3 th:text="${{post.title}}"/>
+            <h5 th:text="'By ' + ${{post.author}}"/>
+            <p th:utext="${{post.content}}"/>
+        </section>
+        <section th:id="links">
+            <div>
+                <a th:if="${prevPost}" th:href="'/' + ${{prevPost.id}}" th:text="'<<< Prev Post: \'' + ${{prevPost.title}} + '\''"/>
+            </div>
+            <div>
+                <a th:href="'/'" th:text="'Return Home'"/>
+            </div>
+            <div>
+                <a th:if="${nextPost}" th:href="'/' + ${{nextPost.id}}" th:text="'Next Post: \'' + ${{nextPost.title}} + '\' >>>'"/>
+            </div>
+        </section>
+        <section th:id="comments">
+            <form th:id="comment" action="" th:action="@{'/comment/' + ${post.id}}" th:object="${comment}" method="post">
+                <p th:id="comment-author">Author: <input type="text" th:field="*{author}" /></p>
+                <p>Content:</p>
+                <textarea rows="3" th:field="*{content}" />
+                <p><input type="submit" value="Add Comment" /></p>
+            </form>
+            <div th:id="comment" th:each="comment : ${post.comments}">
+                <p th:id="comment-author" th:text="${{comment.author}}"/>
+                <p th:text="${{comment.content}}"/>
+            </div>
+        </section>
     </div>
 </body>
 </html>

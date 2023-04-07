@@ -9,7 +9,7 @@ body {
     padding: 25px;
 }
 
-h2, h3, h4 {
+h2, h3, h5 {
     text-align: center;
 }
 
@@ -38,26 +38,43 @@ input {
 
 #content textarea {
     padding: 5px;
-    display: block;
     width: 90%;
     font-size: 12px;
     resize: none;
 }
 
+#post {
+    border-bottom: lightgrey 1px solid;
+}
 
 #links {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     text-align: center;
     font-size: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border-bottom: lightgrey 1px solid;
 }
 
-.right {
-    float: right;
-    width: 30%;
+#comments {
+    border-bottom: lightgrey 1px solid;
 }
 
-.left {
-    float: left;
-    width: 30%;
+#comment {
+    border: lightgrey 1px solid;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+#comment p {
+    padding: 5px;
+    margin: 0;
+}
+
+#comment-author {
+    background-color: lightgrey;
+    border-radius: 10px 10px 0px 0px;
 }
 
 .center {

@@ -1,17 +1,13 @@
 package com.example.blog.controller;
 
+import com.example.blog.entity.Comment;
 import com.example.blog.entity.Post;
 import com.example.blog.service.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class PostController {
@@ -33,6 +29,7 @@ public class PostController {
         model.addAttribute("post", postService.getPostById(id));
         model.addAttribute("prevPost", postService.getPostById(id -1));
         model.addAttribute("nextPost", postService.getPostById(id + 1));
+        model.addAttribute("comment", new Comment());
         return "post";
     }
 

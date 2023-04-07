@@ -1,49 +1,37 @@
 package com.example.blog.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
-import jakarta.persistence.OneToMany;
-
-import java.util.List;
+import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Post {
+public class Comment {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private String title;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Integer id;
     private String author;
-    @Lob
     private String content;
-    @OneToMany(mappedBy = "post")
-    private List<Comment> comments;
+    @ManyToOne
+    @JsonIgnore
+    private Post post;
 
-    public Post() {
+    public Comment() {
     }
 
-    public Post(String title, String author, String content) {
-        this.title = title;
+    public Comment(String author, String content) {
         this.author = author;
         this.content = content;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getAuthor() {
@@ -62,22 +50,21 @@ public class Post {
         this.content = content;
     }
 
-    public List<Comment> getComments() {
-        return comments;
+    public Post getPost() {
+        return post;
     }
 
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
+    public void setPost(Post post) {
+        this.post = post;
     }
 
     @Override
     public String toString() {
-        return "Post{" +
+        return "Comment{" +
                 "id=" + id +
-                ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", content='" + content + '\'' +
-                ", comments=" + comments +
+                ", post=" + post +
                 '}';
     }
 }
