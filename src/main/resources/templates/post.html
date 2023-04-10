@@ -24,9 +24,16 @@
         </section>
         <section th:id="comments">
             <form th:id="comment" action="" th:action="@{'/comment/' + ${post.id}}" th:object="${comment}" method="post">
-                <p th:id="comment-author">Author: <input type="text" th:field="*{author}" /></p>
-                <p>Content:</p>
-                <textarea rows="3" th:field="*{content}" />
+                <div th:class="${#fields.hasErrors('author')}? 'error-box'">
+                    <p th:id="comment-author">
+                        <label th:for="author">Author: </label><input th:id="author" type="text" th:field="*{author}"/>
+                    </p>
+                    <p th:if="${#fields.hasErrors('author')}" th:errorclass="error" th:errors="*{author}"/>
+                </div>
+                <div th:class="${#fields.hasErrors('content')}? 'error-box'">
+                    <textarea rows="3" th:id="content" th:field="*{content}" />
+                    <p th:if="${#fields.hasErrors('content')}" th:errorclass="error" th:errors="*{content}"/>
+                </div>
                 <p><input type="submit" value="Add Comment" /></p>
             </form>
             <div th:id="comment" th:each="comment : ${post.comments}">

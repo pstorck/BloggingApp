@@ -8,10 +8,18 @@
     <div th:id="content">
         <h3>New Blog Post:</h3>
         <form action="#" th:action="@{/post}" th:object="${post}" method="post">
-            <p>Title: <input th:id="title" type="text" th:field="*{title}" /></p>
-            <p>Author: <input type="text" th:field="*{author}" /></p>
-            <p>Content:</p>
-            <textarea rows="30" th:field="*{content}" />
+            <div th:class="${#fields.hasErrors('title')}? 'error-box'">
+                <label th:for="title">Title: </label><input th:id="title" type="text" th:field="*{title}"/>
+                <p th:if="${#fields.hasErrors('title')}" th:errorclass="error" th:errors="*{title}"/>
+            </div>
+            <div th:class="${#fields.hasErrors('author')}? 'error-box'">
+                <label th:for="author">Author: </label><input th:id="author" type="text" th:field="*{author}"/>
+                <p th:if="${#fields.hasErrors('author')}" th:errorclass="error" th:errors="*{author}"/>
+            </div>
+            <div th:class="${#fields.hasErrors('content')}? 'error-box'">
+                <label th:for="content">Content: </label><textarea th:id="content" rows="30" th:field="*{content}" />
+                <p th:if="${#fields.hasErrors('content')}" th:errorclass="error" th:errors="*{content}"/>
+            </div>
             <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
         </form>
     </div>

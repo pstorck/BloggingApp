@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotEmpty;
 
 import java.util.List;
 
@@ -14,8 +15,11 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @NotEmpty(message = "Title can not be empty.")
     private String title;
+    @NotEmpty(message = "Author can not be empty.")
     private String author;
+    @NotEmpty(message = "Content can not be empty.")
     @Lob
     private String content;
     @OneToMany(mappedBy = "post")

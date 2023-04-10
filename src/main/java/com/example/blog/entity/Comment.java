@@ -6,13 +6,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
+    @NotEmpty(message = "Author can not be empty.")
     private String author;
+    @NotEmpty(message = "Content can not be empty.")
     private String content;
     @ManyToOne
     @JsonIgnore
