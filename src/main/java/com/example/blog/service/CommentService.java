@@ -7,6 +7,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CommentService {
 
@@ -14,6 +16,14 @@ public class CommentService {
 
     public CommentService(CommentRepository commentRepository) {
         this.commentRepository = commentRepository;
+    }
+
+    public List<Comment> getComments() {
+        return (List<Comment>) commentRepository.findAll();
+    }
+
+    public Comment getCommentById(int id) {
+        return commentRepository.findById(id).orElse(null);
     }
 
     public void addComment(Post post, Comment comment) {

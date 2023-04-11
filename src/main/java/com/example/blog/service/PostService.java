@@ -33,7 +33,7 @@ public class PostService {
         return (List<Post>) postRepository.findAll();
     }
 
-    public Post getPostById(Integer id) {
+    public Post getPostById(int id) {
         return postRepository.findById(id).orElse(null);
     }
 }
