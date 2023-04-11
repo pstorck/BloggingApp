@@ -17,7 +17,6 @@ public class Post {
     private int id;
     @NotEmpty(message = "Title can not be empty.")
     private String title;
-    @NotEmpty(message = "Author can not be empty.")
     private String author;
     @NotEmpty(message = "Content can not be empty.")
     @Lob

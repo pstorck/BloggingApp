@@ -11,9 +11,8 @@ import jakarta.validation.constraints.NotEmpty;
 @Entity
 public class Comment {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @NotEmpty(message = "Author can not be empty.")
     private String author;
     @NotEmpty(message = "Content can not be empty.")
     private String content;

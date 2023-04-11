@@ -3,6 +3,8 @@ package com.example.blog.service;
 import com.example.blog.entity.Post;
 import com.example.blog.repository.PostRepository;
 import com.example.blog.transformer.ContentTransformer;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +21,10 @@ public class PostService {
     }
 
     public void createPost(Post post) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            post.setAuthor(auth.getName());
+        }
         post.setContent(contentTransformer.transform(post.getContent()));
         postRepository.save(post);
     }
