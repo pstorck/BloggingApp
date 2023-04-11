@@ -25,7 +25,7 @@ public class CommentController {
     }
 
     @PostMapping("{postId}")
-    public String addComment(@PathVariable Integer postId, @Valid Comment comment, BindingResult result, Model model) {
+    public String addComment(@PathVariable int postId, @Valid Comment comment, BindingResult result, Model model) {
         Post post = postService.getPostById(postId);
         if (result.hasErrors()) {
             model.addAttribute("comment", comment);
@@ -34,5 +34,11 @@ public class CommentController {
         }
         commentService.addComment(post, comment);
         return "redirect:/" + postId;
+    }
+
+    @PostMapping("delete/{id}")
+    public String deleteComment(@PathVariable int id) {
+        commentService.deleteComment(id);
+        return "redirect:/";
     }
 }

@@ -36,4 +36,15 @@ public class PostService {
     public Post getPostById(int id) {
         return postRepository.findById(id).orElse(null);
     }
+
+    public void updatePost(int id, Post post) {
+        Post update = postRepository.findById(id).orElse(null);
+        update.setTitle(post.getTitle());
+        update.setContent(post.getContent());
+        postRepository.save(update);
+    }
+
+    public void deletePost(int id) {
+        postRepository.deleteById(id);
+    }
 }

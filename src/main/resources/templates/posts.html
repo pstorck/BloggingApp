@@ -20,6 +20,12 @@
                     <a th:href="'/' + ${{post.id}}" th:text="${{post.title}}" />
                 </td>
                 <td th:text="${{post.author}}"/>
+                <td>
+                    <a th:text="'Edit'" th:if="${user.equals(post.author)}" th:href="'/edit/' + ${post.id}"/>
+                    <form action="#"  th:if="${user.equals(post.author)}" th:action="@{'/delete/' + ${post.id}}" th:method="post">
+                        <input type="submit" th:value="Delete"/>
+                    </form>
+                </td>
             </tr>
             <tr>
                 <td><a th:href="'/new'" th:text="'Add Post'" /></td>

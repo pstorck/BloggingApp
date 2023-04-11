@@ -34,6 +34,9 @@
             <div th:id="comment" th:each="comment : ${post.comments}">
                 <p th:id="comment-author" th:text="${{comment.author}}"/>
                 <p th:text="${{comment.content}}"/>
+                <form action="#" th:if="${user.equals(comment.author)}" th:action="@{'comment/delete/' + ${comment.id}}" th:method="post">
+                    <input type="submit" th:value="Delete"/>
+                </form>
             </div>
         </section>
     </div>

@@ -23,7 +23,7 @@ public class BlogApplication {
     public CommandLineRunner init(PostService postService, CommentService commentService) {
         String content = getDummyContent();
         return args -> {
-            postService.createPost(new Post("How to be Epic at Programming", "Parker Storck", content));
+            postService.createPost(new Post("How to be Epic at Programming", "tester", content));
             postService.createPost(new Post("Building Applications with Spring Boot and Thymeleaf", "Parker Storck", content));
             postService.createPost(new Post("Score More: An Expert's Guide to Hockey", "Parker Storck", content));
             postService.getPosts().forEach(post -> getDummyComments().forEach(comment -> commentService.addComment(post, comment)));
@@ -40,7 +40,7 @@ public class BlogApplication {
 
     private List<Comment> getDummyComments() {
         List<Comment> comments = new ArrayList<>();
-        comments.add(new Comment("Parker Storck", "Wow! This post is awesome!"));
+        comments.add(new Comment("tester", "Wow! This post is awesome!"));
         comments.add(new Comment("Bob Smith", "This post makes some interesting points."));
         comments.add(new Comment("Tom Jones", "Would you make a post about how to do this using Angular?"));
         return comments;

@@ -7,7 +7,7 @@
 <body>
     <div th:id="content">
         <h3>New Blog Post:</h3>
-        <form action="#" th:action="@{/post}" th:object="${post}" method="post">
+        <form action="#" th:action="${post.id} ? @{'/edit/' + ${post.id}} : @{/new}" th:object="${post}" method="post">
             <div th:class="${#fields.hasErrors('title')}? 'error-box'">
                 <label th:for="title">Title: </label><input th:id="title" type="text" th:field="*{title}"/>
                 <p th:if="${#fields.hasErrors('title')}" th:errorclass="error" th:errors="*{title}"/>
